@@ -23,5 +23,5 @@ def calculate_path(source: Coordinate, targets: List[Coordinate], enemies: List[
     :return: list of calculated path waypoints and the graph constructed
     """
     main_graph = create_graph.init_graph(source, targets[0], enemies)
-    # path = nx.shortest_path(main_graph, source=source, target=targets[0], weight='dist')
-    return [source] + targets, main_graph
+    path = nx.shortest_path(main_graph, source=source, target=targets[0], weight='dist')
+    return path, main_graph
