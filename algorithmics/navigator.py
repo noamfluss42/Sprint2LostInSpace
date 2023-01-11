@@ -3,6 +3,7 @@ from typing import List, Tuple
 import networkx as nx
 
 from algorithmics.enemy.enemy import Enemy
+from algorithmics.utils import create_graph
 from algorithmics.utils.coordinate import Coordinate
 
 
@@ -21,4 +22,6 @@ def calculate_path(source: Coordinate, targets: List[Coordinate], enemies: List[
     :param allowed_detection: maximum allowed distance of radar detection
     :return: list of calculated path waypoints and the graph constructed
     """
-    return [source] + targets, nx.DiGraph()
+    main_graph = create_graph.init_graph(source, targets[0], enemies)
+    return [source] + targets, main_graph
+
