@@ -63,7 +63,10 @@ def is_legal_edge_radar(c0: Coordinate, c1: Coordinate, radar: Radar):
 def is_two_points_path_valid(point1, point2, center, radius):
     line = LineString([(point1.x, point1.y), (point2.x, point2.y)])
     circle = Point(center.x, center.y).buffer(radius)
-    if not line.intersects(circle):
+    print("point1, point2",point1, point2)
+    print("line.intersects(circle)",line.intersects(circle))
+    print("circle.intersection(line)",circle.intersection(line))
+    if not circle.intersects(line):
         return True
     else:
         intersection = circle.intersection(line)
