@@ -21,8 +21,8 @@ def is_legal_edge(c0: Coordinate, c1: Coordinate, enemies: List[Enemy]):
             if not is_legal_edge_black_hole(c0, c1, enemy):
                 return False
         if "Radar" in str(type(enemy)):
-            if not is_legal_edge_radar(c0, c1, enemy):
-                return False
+           if not is_legal_edge_radar(c0, c1, enemy):
+               return False
     return True
 
 def is_legal_edge_astroid(c0: Coordinate, c1: Coordinate, zone: AsteroidsZone):
@@ -41,10 +41,10 @@ def is_legal_edge_astroid(c0: Coordinate, c1: Coordinate, zone: AsteroidsZone):
     boundary = zone.boundary
     for i in range(len(boundary) - 1):
         if (c0 == boundary[i] and c1 == boundary[i+1]) or (c0 == boundary[i+1] and c1 == boundary[i]):
-            print(line, "True")
+
             return True
     if (c0 == boundary[-1] and c1 == boundary[0]) or (c1 == boundary[-1] and c0 == boundary[0]):
-        print(line, "True")
+
         return True
     return False
 
@@ -63,13 +63,15 @@ def is_legal_edge_radar(c0: Coordinate, c1: Coordinate, radar: Radar):
 def is_two_points_path_valid(point1, point2, center, radius):
     line = LineString([(point1.x, point1.y), (point2.x, point2.y)])
     circle = Point(center.x, center.y).buffer(radius)
-    print("point1, point2",point1, point2)
+    """print("point1, point2",point1, point2)
     print("line.intersects(circle)",line.intersects(circle))
-    print("circle.intersection(line)",circle.intersection(line))
-    if not circle.intersects(line):
+    print()
+    print("circle.intersection(line)",circle.intersection(line))"""
+    intersection = circle.intersection(line)
+
+    if not circle.intersects(line) or "Point" in str(type(intersection)):
         return True
     else:
-        intersection = circle.intersection(line)
         point1, point2 = intersection.boundary
     # first angle
     center_angle1 = np.arctan2(center.y - point1.y, center.x - point1.x)
@@ -88,4 +90,12 @@ def is_two_points_path_valid(point1, point2, center, radius):
 #points_array = [Coordinate(-5,0), Coordinate(0,-15),Coordinate(20, -25), Coordinate(35,-25), Coordinate(50,0)]
 
 #for i in range(0, len(points_array)-1):
-    # print(is_two_points_path_valid(points_array[i], points_array[i+1], Coordinate(30,0), 35))
+    # print(is_two_points_path_valid(points_array[i], points_array[i+1], Coordinate(30,0), 35))4
+
+
+"""circle = Point(10, -10).buffer(5)
+p1 = Coordinate(0,0)
+p2 = Coordinate(20,0)
+l = LineString([(p1.x, p1.y), (p2.x, p2.y)])
+print(Coordinate(3,0).boundary)
+"""

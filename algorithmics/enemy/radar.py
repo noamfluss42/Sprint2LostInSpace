@@ -28,12 +28,10 @@ class Radar(Enemy):
         points = []
         min_radius = 3
         jump = 4
-        for r in np.arange(min_radius, int(self.radius + jump), jump):
-            points += get_bounding_circle(self.center, r, r/4)
+        for r in np.linspace(min_radius, int(self.radius + jump), 10):
+            points += get_bounding_circle(self.center, r, 10)
         # points += [Coordinate(0, -6) + self.center, Coordinate(2, -5) + self.center, Coordinate(4, -3) + self.center,
         #            Coordinate(6, 0)+self.center]
         print("radius", self.radius)
         print("center",self.center)
-        print("points",[Coordinate(0, -6) + self.center, Coordinate(2, -5) + self.center, Coordinate(4, -3) + self.center,
-                   Coordinate(6, 0)+self.center])
         return points
