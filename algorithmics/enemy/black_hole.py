@@ -18,10 +18,10 @@ class BlackHole(Enemy):
         self.center = center
         self.radius = radius
 
-    def get_points(self, n=30) -> List[Coordinate]:
+    def get_points(self, n=50) -> List[Coordinate]:
         dif = 360/n
         angles = [math.radians(theta) for theta in np.arange(0, 360, dif)]
-        rad_with_dif = self.radius / (math.cos(math.radians(dif)))
+        rad_with_dif = (self.radius / (math.cos(math.radians(dif)))) #+ 0.05
         print("rad_with_dif", rad_with_dif)
         return [Coordinate(self.center.x + rad_with_dif * math.cos(theta),
                            self.center.y + rad_with_dif * math.sin(theta)) for

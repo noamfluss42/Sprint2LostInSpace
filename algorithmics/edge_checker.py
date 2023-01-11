@@ -40,6 +40,7 @@ def is_legal_edge_astroid(c0: Coordinate, c1: Coordinate, zone: AsteroidsZone):
         return True
     return False
 
+
 def is_legal_edge_black_hole(c0: Coordinate, c1: Coordinate, hole: BlackHole):
     line = LineString([(c0.x, c0.y), (c1.x, c1.y)])
     circle = Point(hole.center.x, hole.center.y).buffer(hole.radius)
