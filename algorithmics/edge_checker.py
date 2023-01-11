@@ -22,7 +22,7 @@ def is_legal_edge_astroid(c0: Coordinate, c1: Coordinate, zone: AsteroidsZone):
     line = LineString([(c0.x, c0.y), (c1.x, c1.y)])
     poly = Polygon(zone.boundary)
 
-    intersect = line.intersects(poly)
+    intersect = isinstance(line.intersection(poly), Point)
     return intersect
 
 
