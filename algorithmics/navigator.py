@@ -22,7 +22,12 @@ def calculate_path(source: Coordinate, targets: List[Coordinate], enemies: List[
     :param allowed_detection: maximum allowed distance of radar detection
     :return: list of calculated path waypoints and the graph constructed
     """
+    #source = Coordinate(50, 1)
     main_graph = create_graph.init_graph(source, targets[0], enemies)
+    print("source",source)
+    print("targets[0]",targets[0])
+
     path = nx.shortest_path(main_graph, source=source, target=targets[0], weight='dist')
+    #path = [source,Coordinate(-5,0), Coordinate(0,-15),Coordinate(20, -25), Coordinate(45,-24), targets[0]]
     return path, main_graph
 
