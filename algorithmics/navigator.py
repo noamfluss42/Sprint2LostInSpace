@@ -24,6 +24,7 @@ def calculate_path(source: Coordinate, targets: List[Coordinate], enemies: List[
     """
     # main_graph = create_graph.init_graph(source, targets, enemies)
     # path = nx.shortest_path(main_graph, source=source, target=targets[0], weight='dist')
-    path, main_graph = multiple_targets.calculate_path(source, targets, enemies)
+    print("targets[:5]",targets[:3])
+    path, main_graph = multiple_targets.calculate_path(source, targets[:3], enemies)
     return path, main_graph
 
